@@ -1,10 +1,10 @@
-import { computed, nextTick, Ref, ref, reactive, watch } from 'vue'
+import { computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import { key } from '@/store'
 import isInArray from '@/util/isInArray'
 import containsSame from '@/util/containsSame'
-import { OptionsHook } from './useOptions'
 import getOptionsCombinations from '@/util/getOptionsCombinations'
+import { OptionsHook } from './useOptions'
 
 export default function useVariants(options: OptionsHook) {
   const store = useStore(key)

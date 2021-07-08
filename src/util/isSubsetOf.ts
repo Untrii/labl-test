@@ -1,4 +1,4 @@
-export default function containsSame(array: string[], subset: string[]) {
+export default function isSubsetOf(array: string[], subset: string[]) {
   const values = new Map<string, number>()
   for (const item of array) {
     if (!values.has(item)) values.set(item, 1)

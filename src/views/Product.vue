@@ -89,7 +89,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onBeforeMount, reactive, ref, watch, nextTick } from 'vue'
+import { computed, defineComponent, watch } from 'vue'
 import { useStore } from 'vuex'
 import { key } from '@/store'
 
@@ -138,7 +138,6 @@ export default defineComponent({
     //При изменении опций нужно сгенерировать новые данные таблицы
     //Например { options: ['ColorName'], ... } => { options: ['ColorName', 'XS' ], ... }
     watch([options, variants], ([newOptions, newVariants], [oldOptions]) => {
-      console.log('merge')
       table.merge(newOptions.used, newVariants.selected, oldOptions.used)
     })
 
