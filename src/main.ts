@@ -8,4 +8,4 @@ import './css/global.scss'
 createApp(App)
   .use(store, key)
   .use(router)
-  .mount('#app')
+  .mount('#labl-admin-app')

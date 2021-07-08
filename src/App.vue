@@ -3,7 +3,7 @@
 </template>
 
 <style lang="scss">
-#app {
+#labl-admin-app {
   min-height: 100vh;
 }
 </style>
