@@ -1,0 +1,21 @@
+$text-main: #232323;
+$text-darkgray: #444444;
+$text-gray: #666666;
+$text-lightgray: #999999;
+$purple: #6a58b2;
+$blue: #86afff;
+
+$shadow-small: 0px 0px 16px rgba(0, 0, 0, 0.1);
+$shadow-large: 0px 0px 32px rgba(0, 0, 0, 0.05);
+$shadow-focus: 0px 0px 8px rgba(134, 175, 255, 0.25);
+
+$radius-tiny: 4px;
+$radius-small: 8px;
+$radius-medium: 10px;
+$radius-large: 24px;
+
+$input-border: 1px solid
+  rgba(
+    $color: black,
+    $alpha: 0.3,
+  );

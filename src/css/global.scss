@@ -1,0 +1,10 @@
+@import './variables.scss';
+@import './fonts.scss';
+
+body {
+  background: linear-gradient(180deg, #fff5e1 0%, #fff9ed 0.01%, #ffe9fa 100%);
+  line-height: 1.875rem;
+  font-size: 0.875rem;
+  font-family: 'Recoleta';
+  color: $text-main;
+}
