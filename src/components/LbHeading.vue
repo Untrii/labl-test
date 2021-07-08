@@ -10,7 +10,7 @@ export default defineComponent({
     },
   },
   setup({ level }, { slots }) {
-    return () => h('h' + level, { class: 'lb-header' }, slots)
+    return () => h('h' + level, { class: 'lb-heading' }, slots)
   },
 })
 </script>
