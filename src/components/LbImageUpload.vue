@@ -11,7 +11,7 @@
       :disabled="disabled"
       @dragover.prevent
       @drop="onDrop"
-      @click="$refs.fileInput.click()"
+      @click="openFileExplorer"
     >
       <p class="lb-image-upload__button-text">
         Drag and drop or browse to choose a file
@@ -79,7 +79,11 @@ export default defineComponent({
       handleFiles(files)
     }
 
-    return { imageSources, onDrop, onFileInput, fileInput }
+    const openFileExplorer = function() {
+      fileInput.value.click()
+    }
+
+    return { imageSources, onDrop, onFileInput, fileInput, openFileExplorer }
   },
 })
 </script>
