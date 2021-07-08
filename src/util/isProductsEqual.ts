@@ -1,6 +1,6 @@
 import IProduct from '@/models/IProduct'
 import IVariant from '@/models/IVariant'
-import containsSame from './isSubsetOf'
+import containsSame from './containsSame'
 
 function isImagesEquals(a: IProduct, b: IProduct) {
   const imgA = [...a.product.images]
@@ -102,6 +102,7 @@ function isRegionsSame(a: IProduct, b: IProduct) {
 }
 
 export default function isProductEquals(a: IProduct, b: IProduct) {
+  console.log('call')
   return (
     a.default_locale == b.default_locale &&
     containsSame(a.locales, b.locales) &&
