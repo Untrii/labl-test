@@ -14,7 +14,7 @@
         v-for="button in buttons"
         :key="button.name"
         :disabled="disabled"
-        @click="button.selected ? null : $emit('select', button.value)"
+        @click="onButtonClick(button)"
       >
         {{ button.name
         }}<button
@@ -52,7 +52,7 @@ export default defineComponent({
     label: String,
     disabled: Boolean,
   },
-  setup(props) {
+  setup(props, { emit }) {
     const buttons = computed(() => {
       const { preset, selected } = props
       const result = []
@@ -76,7 +76,11 @@ export default defineComponent({
       return result
     })
 
-    return { buttons }
+    const onButtonClick = function(button: { name: string; selected: boolean; value: string | string[] }) {
+      if (button.selected) emit('select', button.value)
+    }
+
+    return { buttons, onButtonClick }
   },
 })
 </script>
