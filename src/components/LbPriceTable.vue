@@ -172,10 +172,13 @@ export default defineComponent({
   color: gray;
 
   &__heading {
-    padding-left: 12px;
-    padding-right: 32px;
+    padding: 0 32px 0 12px;
     font-weight: 400;
     text-align: left;
+
+    &:first-child {
+      padding-left: 16px;
+    }
   }
 
   &__body {

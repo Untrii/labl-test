@@ -1,5 +1,5 @@
 <template>
-  <tr class="lb-price-table-row" v-if="!isCollapsed" @change.stop>
+  <tr :class="['lb-price-table-row', { 'lb-price-table-row_root': !nestingLevel }]" v-if="!isCollapsed" @change.stop>
     <th class="lb-price-table-row__heading" :style="headingStyle" @click="isCollapsedLocal = !isCollapsedLocal">
       <img
         class="lb-price-table-row__expand"
@@ -197,8 +197,17 @@ export default defineComponent({
 @import '@/css/variables.scss';
 
 .lb-price-table-row {
-  height: 30px;
+  height: 28px;
   transition: height 0.2s;
+
+  &_root {
+    th,
+    td,
+    .lb-price-table-row__input {
+      height: 33px !important;
+      line-height: 33px !important;
+    }
+  }
 
   &__heading {
     vertical-align: top;
@@ -208,7 +217,7 @@ export default defineComponent({
   }
 
   &__input {
-    height: 30px;
+    height: 27.5px;
     padding: 0 8px 0 12px;
     background: transparent;
     border: none;
@@ -261,6 +270,8 @@ export default defineComponent({
 
   td,
   th {
+    height: 28px;
+    line-height: 28px;
     background: white;
     padding: 0;
     border-left: solid #d9d9d9 1px;
