@@ -5,12 +5,9 @@ import findIndex from '@/util/findIndex'
 
 export default function useOptions() {
   const store = useStore(key)
-  const selected = computed(() => store.state.product.options)
 
-  const used = computed(() => {
-    return selected.value.filter((item) => subOptions[item].selected.length)
-  })
-
+  const selected = ref([] as string[])
+  const used = computed(() => [...store.state.product.options])
   const preset = ref(['Color', 'Size'])
 
   const removeFromArray = function(array: string[] | string[][], value: string | string[]) {
@@ -20,7 +17,7 @@ export default function useOptions() {
   }
 
   const selectOption = function(name: string) {
-    store.commit('addOption', name)
+    selected.value = [...selected.value, name]
     if (!subOptions[name])
       subOptions[name] = {
         preset: [] as string[],
@@ -30,7 +27,7 @@ export default function useOptions() {
   }
 
   const deleteOption = function(name: string) {
-    store.commit('deleteOption', name)
+    selected.value = selected.value.filter((item) => item != name)
   }
 
   const subOptions = reactive({
@@ -66,12 +63,16 @@ export default function useOptions() {
   const selectSubOption = function(optionName: string, subOptionName: string) {
     const subOption = subOptions[optionName]
     const { selected } = subOption
+
+    if (selected.length == 0) store.commit('addOption', optionName)
     selected.push(subOptionName)
     sort()
   }
 
   const deleteSubOption = function(optionName: string, subOptionName: string) {
-    removeFromArray(subOptions[optionName].selected, subOptionName)
+    const subOption = subOptions[optionName]
+    removeFromArray(subOption.selected, subOptionName)
+    if (subOption.selected.length == 0) store.commit('deleteOption', optionName)
   }
 
   return computed(() => ({

@@ -42,7 +42,7 @@
         <LbOptionCollection
           class="product__base-options"
           :preset="options.preset"
-          :selected="state.product.options"
+          :selected="options.selected"
           :disabled="api.isQueryPending"
           @select="options.selectOption"
           @delete="options.deleteOption"
@@ -138,7 +138,7 @@ export default defineComponent({
     //При изменении опций нужно сгенерировать новые данные таблицы
     //Например { options: ['ColorName'], ... } => { options: ['ColorName', 'XS' ], ... }
     watch([options, variants], ([newOptions, newVariants], [oldOptions]) => {
-      table.merge(newOptions.used, newVariants.selected, oldOptions.used)
+      table.migrate(newOptions.used, newVariants.selected, oldOptions.used)
     })
 
     return {

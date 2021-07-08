@@ -52,7 +52,7 @@ export default function useTable(selectedOptions: Ref<string[]>) {
 
   //При изменении опций нужно сгенерировать новые данные таблицы
   //Например { options: ['ColorName'], ... } => { options: ['ColorName', 'XS' ], ... }
-  const merge = function(newUsedOptions: string[], newSelectedVariants: string[][], oldUsedOptions: string[]) {
+  const migrate = function(newUsedOptions: string[], newSelectedVariants: string[][], oldUsedOptions: string[]) {
     if (newUsedOptions.length != oldUsedOptions.length) {
       const ignoreOption = newUsedOptions.find((option) => !oldUsedOptions.includes(option))
       nextTick(() => {
@@ -78,6 +78,6 @@ export default function useTable(selectedOptions: Ref<string[]>) {
 
   return {
     update,
-    merge,
+    migrate,
   }
 }
