@@ -196,6 +196,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import '@/css/variables.scss';
 
+$table-border: solid #b3b3b3 1px;
+$table-cell-border: solid #d9d9d9 1px;
+
 .lb-price-table-row {
   height: 28px;
   transition: height 0.2s;
@@ -237,34 +240,29 @@ export default defineComponent({
 
   &:first-child {
     th {
+      border-top: $table-border;
       border-top-left-radius: $radius-tiny;
     }
 
-    td:last-child {
-      border-top-right-radius: $radius-tiny;
-    }
-
-    td,
-    th {
-      background: white;
-      padding: 0;
-
-      border-top: solid #b3b3b3 1px;
+    td {
+      border-top: $table-border;
+      &:last-child {
+        border-top-right-radius: $radius-tiny;
+      }
     }
   }
 
   &:last-child {
     th {
+      border-bottom: $table-border;
       border-bottom-left-radius: $radius-tiny;
     }
 
-    td:last-child {
-      border-bottom-right-radius: $radius-tiny;
-    }
-
-    td,
-    th {
-      border-bottom: solid #b3b3b3 1px;
+    td {
+      border-bottom: $table-border;
+      &:last-child {
+        border-bottom-right-radius: $radius-tiny;
+      }
     }
   }
 
@@ -274,16 +272,16 @@ export default defineComponent({
     line-height: 28px;
     background: white;
     padding: 0;
-    border-left: solid #d9d9d9 1px;
-    border-top: solid #d9d9d9 1px;
+    border-left: $table-cell-border;
+    border-top: $table-cell-border;
   }
+
   th {
-    border-left: solid #b3b3b3 1px;
+    border-left: $table-border;
   }
 
   td:last-child {
-    border-top-right-radius: $radius-tiny;
-    border-right: 1px solid #b3b3b3;
+    border-right: $table-border;
   }
 }
 </style>
