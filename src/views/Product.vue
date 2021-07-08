@@ -211,6 +211,7 @@ $column-gap: 102px;
   }
 
   &__basic {
+    margin-bottom: 31px;
     max-width: $first-column-width;
     &-caption {
       display: flex;
