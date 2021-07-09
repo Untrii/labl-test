@@ -1,6 +1,5 @@
-import { shallowMount, mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import LbPriceTable from '@/components/LbPriceTable.vue'
-import LbPriceTableRow from '@/components/LbPriceTableRow.vue'
 import INestedRow from '@/models/INestedRow'
 
 const wrapper = shallowMount(LbPriceTable, {
