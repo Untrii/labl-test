@@ -77,7 +77,7 @@ export default defineComponent({
     })
 
     const onButtonClick = function(button: { name: string; selected: boolean; value: string | string[] }) {
-      if (button.selected) emit('select', button.value)
+      if (!button.selected) emit('select', button.value)
     }
 
     return { buttons, onButtonClick }
