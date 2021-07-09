@@ -102,7 +102,6 @@ function isRegionsSame(a: IProduct, b: IProduct) {
 }
 
 export default function isProductEquals(a: IProduct, b: IProduct) {
-  console.log('call')
   return (
     a.default_locale == b.default_locale &&
     containsSame(a.locales, b.locales) &&
