@@ -22,8 +22,6 @@
 import { computed, defineComponent, PropType, reactive, watch } from 'vue'
 import LbPriceTableRow from './LbPriceTableRow.vue'
 import INestedRow from '@/models/INestedRow'
-import getOptionsCombinations from '@/util/getOptionsCombinations'
-import isPrefixOf from '@/util/isPrefixOf'
 import containsSame from '@/util/containsSame'
 import isSubsetOf from '@/util/isSubsetOf'
 
@@ -73,7 +71,7 @@ export default defineComponent({
     const computeNestedPrices = function(row: INestedRow) {
       const { nested } = row
       if (!nested || !nested.length) return
-      let prices: ({ min: number; max: number } | number)[] = []
+      let prices: ({ min: number; max: number } | number | null)[] = []
       let minNestedPrices: number[] = []
       let maxNestedPrices: number[] = []
 
@@ -85,11 +83,11 @@ export default defineComponent({
           prices = [...nestedPrices]
           minNestedPrices = nestedPrices.map((item) => {
             if (typeof item == 'number') return item
-            else return item.min
+            else return item?.min ?? 0
           })
           maxNestedPrices = nestedPrices.map((item) => {
             if (typeof item == 'number') return item
-            else return item.max
+            else return item?.max ?? 0
           })
           continue
         }
@@ -147,10 +145,6 @@ export default defineComponent({
 
     const tableTree = computed(() => {
       return buildTableTree(props.name, props.options, props.regions.length)
-    })
-
-    const optionsCombinations = computed(() => {
-      return getOptionsCombinations(props.options)
     })
 
     const onChange = function({ path, index, value }: { path: string[]; index: number; value: number }) {
